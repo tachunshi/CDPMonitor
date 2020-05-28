@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talkingdata.plugin.mapper.CDPCrowdMapper">
+  <resultMap id="BaseResultMap" type="com.talkingdata.plugin.entity.CDPCrowd">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="channel_id" jdbcType="VARCHAR" property="channelId" />
+    <result column="crowd_id" jdbcType="VARCHAR" property="crowdId" />
+    <result column="crowd_name" jdbcType="VARCHAR" property="crowdName" />
+    <result column="crowd_reach_users" jdbcType="INTEGER" property="crowdReachUsers" />
+    <result column="crowd_status" jdbcType="INTEGER" property="crowdStatus" />
+    <result column="crowd_creator" jdbcType="VARCHAR" property="crowdCreator" />
+    <result column="crowd_ower" jdbcType="VARCHAR" property="crowdOwer" />
+    <result column="crowd_directory" jdbcType="VARCHAR" property="crowdDirectory" />
+    <result column="quote_trait__num" jdbcType="INTEGER" property="quoteTraitNum" />
+    <result column="quote_crowd__num" jdbcType="INTEGER" property="quoteCrowdNum" />
+    <result column="quoted_trait_num" jdbcType="INTEGER" property="quotedTraitNum" />
+    <result column="quoted_crowd_num" jdbcType="INTEGER" property="quotedCrowdNum" />
+    <result column="export_task_num" jdbcType="INTEGER" property="exportTaskNum" />
+    <result column="crowd_activat_time" jdbcType="TIMESTAMP" property="crowdActivatTime" />
+    <result column="crowd_update_time" jdbcType="TIMESTAMP" property="crowdUpdateTime" />
+    <result column="collector_time" jdbcType="TIMESTAMP" property="collectorTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, channel_id, crowd_id, crowd_name, crowd_reach_users, crowd_status, crowd_creator, 
+    crowd_ower, crowd_directory, quote_trait__num, quote_crowd__num, quoted_trait_num, 
+    quoted_crowd_num, export_task_num, crowd_activat_time, crowd_update_time, collector_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cdp_crowd
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cdp_crowd
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.talkingdata.plugin.entity.CDPCrowd">
+    insert into cdp_crowd (id, channel_id, crowd_id, 
+      crowd_name, crowd_reach_users, crowd_status, 
+      crowd_creator, crowd_ower, crowd_directory, 
+      quote_trait__num, quote_crowd__num, quoted_trait_num, 
+      quoted_crowd_num, export_task_num, crowd_activat_time, 
+      crowd_update_time, collector_time)
+    values (#{id,jdbcType=INTEGER}, #{channelId,jdbcType=VARCHAR}, #{crowdId,jdbcType=VARCHAR}, 
+      #{crowdName,jdbcType=VARCHAR}, #{crowdReachUsers,jdbcType=INTEGER}, #{crowdStatus,jdbcType=INTEGER}, 
+      #{crowdCreator,jdbcType=VARCHAR}, #{crowdOwer,jdbcType=VARCHAR}, #{crowdDirectory,jdbcType=VARCHAR}, 
+      #{quoteTraitNum,jdbcType=INTEGER}, #{quoteCrowdNum,jdbcType=INTEGER}, #{quotedTraitNum,jdbcType=INTEGER}, 
+      #{quotedCrowdNum,jdbcType=INTEGER}, #{exportTaskNum,jdbcType=INTEGER}, #{crowdActivatTime,jdbcType=TIMESTAMP}, 
+      #{crowdUpdateTime,jdbcType=TIMESTAMP}, #{collectorTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.talkingdata.plugin.entity.CDPCrowd">
+    insert into cdp_crowd
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="crowdId != null">
+        crowd_id,
+      </if>
+      <if test="crowdName != null">
+        crowd_name,
+      </if>
+      <if test="crowdReachUsers != null">
+        crowd_reach_users,
+      </if>
+      <if test="crowdStatus != null">
+        crowd_status,
+      </if>
+      <if test="crowdCreator != null">
+        crowd_creator,
+      </if>
+      <if test="crowdOwer != null">
+        crowd_ower,
+      </if>
+      <if test="crowdDirectory != null">
+        crowd_directory,
+      </if>
+      <if test="quoteTraitNum != null">
+        quote_trait__num,
+      </if>
+      <if test="quoteCrowdNum != null">
+        quote_crowd__num,
+      </if>
+      <if test="quotedTraitNum != null">
+        quoted_trait_num,
+      </if>
+      <if test="quotedCrowdNum != null">
+        quoted_crowd_num,
+      </if>
+      <if test="exportTaskNum != null">
+        export_task_num,
+      </if>
+      <if test="crowdActivatTime != null">
+        crowd_activat_time,
+      </if>
+      <if test="crowdUpdateTime != null">
+        crowd_update_time,
+      </if>
+      <if test="collectorTime != null">
+        collector_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdId != null">
+        #{crowdId,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdName != null">
+        #{crowdName,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdReachUsers != null">
+        #{crowdReachUsers,jdbcType=INTEGER},
+      </if>
+      <if test="crowdStatus != null">
+        #{crowdStatus,jdbcType=INTEGER},
+      </if>
+      <if test="crowdCreator != null">
+        #{crowdCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdOwer != null">
+        #{crowdOwer,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdDirectory != null">
+        #{crowdDirectory,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteTraitNum != null">
+        #{quoteTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quoteCrowdNum != null">
+        #{quoteCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedTraitNum != null">
+        #{quotedTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedCrowdNum != null">
+        #{quotedCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="exportTaskNum != null">
+        #{exportTaskNum,jdbcType=INTEGER},
+      </if>
+      <if test="crowdActivatTime != null">
+        #{crowdActivatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crowdUpdateTime != null">
+        #{crowdUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectorTime != null">
+        #{collectorTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.talkingdata.plugin.entity.CDPCrowd">
+    update cdp_crowd
+    <set>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdId != null">
+        crowd_id = #{crowdId,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdName != null">
+        crowd_name = #{crowdName,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdReachUsers != null">
+        crowd_reach_users = #{crowdReachUsers,jdbcType=INTEGER},
+      </if>
+      <if test="crowdStatus != null">
+        crowd_status = #{crowdStatus,jdbcType=INTEGER},
+      </if>
+      <if test="crowdCreator != null">
+        crowd_creator = #{crowdCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdOwer != null">
+        crowd_ower = #{crowdOwer,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdDirectory != null">
+        crowd_directory = #{crowdDirectory,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteTraitNum != null">
+        quote_trait__num = #{quoteTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quoteCrowdNum != null">
+        quote_crowd__num = #{quoteCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedTraitNum != null">
+        quoted_trait_num = #{quotedTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedCrowdNum != null">
+        quoted_crowd_num = #{quotedCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="exportTaskNum != null">
+        export_task_num = #{exportTaskNum,jdbcType=INTEGER},
+      </if>
+      <if test="crowdActivatTime != null">
+        crowd_activat_time = #{crowdActivatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crowdUpdateTime != null">
+        crowd_update_time = #{crowdUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectorTime != null">
+        collector_time = #{collectorTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.talkingdata.plugin.entity.CDPCrowd">
+    update cdp_crowd
+    set channel_id = #{channelId,jdbcType=VARCHAR},
+      crowd_id = #{crowdId,jdbcType=VARCHAR},
+      crowd_name = #{crowdName,jdbcType=VARCHAR},
+      crowd_reach_users = #{crowdReachUsers,jdbcType=INTEGER},
+      crowd_status = #{crowdStatus,jdbcType=INTEGER},
+      crowd_creator = #{crowdCreator,jdbcType=VARCHAR},
+      crowd_ower = #{crowdOwer,jdbcType=VARCHAR},
+      crowd_directory = #{crowdDirectory,jdbcType=VARCHAR},
+      quote_trait__num = #{quoteTraitNum,jdbcType=INTEGER},
+      quote_crowd__num = #{quoteCrowdNum,jdbcType=INTEGER},
+      quoted_trait_num = #{quotedTraitNum,jdbcType=INTEGER},
+      quoted_crowd_num = #{quotedCrowdNum,jdbcType=INTEGER},
+      export_task_num = #{exportTaskNum,jdbcType=INTEGER},
+      crowd_activat_time = #{crowdActivatTime,jdbcType=TIMESTAMP},
+      crowd_update_time = #{crowdUpdateTime,jdbcType=TIMESTAMP},
+      collector_time = #{collectorTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

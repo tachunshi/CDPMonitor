@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talkingdata.plugin.mapper.HistoryCrowdReachUsersMapper">
+  <resultMap id="BaseResultMap" type="com.talkingdata.plugin.entity.HistoryCrowdReachUsers">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="channel_id" jdbcType="VARCHAR" property="channelId" />
+    <result column="starttime_day" jdbcType="BIGINT" property="starttimeDay" />
+    <result column="crowd_id" jdbcType="VARCHAR" property="crowdId" />
+    <result column="crowd_reach_users" jdbcType="INTEGER" property="crowdReachUsers" />
+    <result column="quoted_trait_num" jdbcType="INTEGER" property="quotedTraitNum" />
+    <result column="quoted_crowd_num" jdbcType="INTEGER" property="quotedCrowdNum" />
+    <result column="export_task_num" jdbcType="INTEGER" property="exportTaskNum" />
+    <result column="collector_time" jdbcType="TIMESTAMP" property="collectorTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, channel_id, starttime_day, crowd_id, crowd_reach_users, quoted_trait_num, quoted_crowd_num, 
+    export_task_num, collector_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from history_crowd_reach_users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from history_crowd_reach_users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.talkingdata.plugin.entity.HistoryCrowdReachUsers">
+    insert into history_crowd_reach_users (id, channel_id, starttime_day, 
+      crowd_id, crowd_reach_users, quoted_trait_num, 
+      quoted_crowd_num, export_task_num, collector_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{channelId,jdbcType=VARCHAR}, #{starttimeDay,jdbcType=BIGINT}, 
+      #{crowdId,jdbcType=VARCHAR}, #{crowdReachUsers,jdbcType=INTEGER}, #{quotedTraitNum,jdbcType=INTEGER}, 
+      #{quotedCrowdNum,jdbcType=INTEGER}, #{exportTaskNum,jdbcType=INTEGER}, #{collectorTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.talkingdata.plugin.entity.HistoryCrowdReachUsers">
+    insert into history_crowd_reach_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="starttimeDay != null">
+        starttime_day,
+      </if>
+      <if test="crowdId != null">
+        crowd_id,
+      </if>
+      <if test="crowdReachUsers != null">
+        crowd_reach_users,
+      </if>
+      <if test="quotedTraitNum != null">
+        quoted_trait_num,
+      </if>
+      <if test="quotedCrowdNum != null">
+        quoted_crowd_num,
+      </if>
+      <if test="exportTaskNum != null">
+        export_task_num,
+      </if>
+      <if test="collectorTime != null">
+        collector_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="starttimeDay != null">
+        #{starttimeDay,jdbcType=BIGINT},
+      </if>
+      <if test="crowdId != null">
+        #{crowdId,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdReachUsers != null">
+        #{crowdReachUsers,jdbcType=INTEGER},
+      </if>
+      <if test="quotedTraitNum != null">
+        #{quotedTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedCrowdNum != null">
+        #{quotedCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="exportTaskNum != null">
+        #{exportTaskNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectorTime != null">
+        #{collectorTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.talkingdata.plugin.entity.HistoryCrowdReachUsers">
+    update history_crowd_reach_users
+    <set>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="starttimeDay != null">
+        starttime_day = #{starttimeDay,jdbcType=BIGINT},
+      </if>
+      <if test="crowdId != null">
+        crowd_id = #{crowdId,jdbcType=VARCHAR},
+      </if>
+      <if test="crowdReachUsers != null">
+        crowd_reach_users = #{crowdReachUsers,jdbcType=INTEGER},
+      </if>
+      <if test="quotedTraitNum != null">
+        quoted_trait_num = #{quotedTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedCrowdNum != null">
+        quoted_crowd_num = #{quotedCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="exportTaskNum != null">
+        export_task_num = #{exportTaskNum,jdbcType=INTEGER},
+      </if>
+      <if test="collectorTime != null">
+        collector_time = #{collectorTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.talkingdata.plugin.entity.HistoryCrowdReachUsers">
+    update history_crowd_reach_users
+    set channel_id = #{channelId,jdbcType=VARCHAR},
+      starttime_day = #{starttimeDay,jdbcType=BIGINT},
+      crowd_id = #{crowdId,jdbcType=VARCHAR},
+      crowd_reach_users = #{crowdReachUsers,jdbcType=INTEGER},
+      quoted_trait_num = #{quotedTraitNum,jdbcType=INTEGER},
+      quoted_crowd_num = #{quotedCrowdNum,jdbcType=INTEGER},
+      export_task_num = #{exportTaskNum,jdbcType=INTEGER},
+      collector_time = #{collectorTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

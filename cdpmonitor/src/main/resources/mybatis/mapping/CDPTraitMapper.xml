@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talkingdata.plugin.mapper.CDPTraitMapper">
+  <resultMap id="BaseResultMap" type="com.talkingdata.plugin.entity.CDPTrait">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="channel_id" jdbcType="VARCHAR" property="channelId" />
+    <result column="trait_id" jdbcType="VARCHAR" property="traitId" />
+    <result column="trait_name" jdbcType="VARCHAR" property="traitName" />
+    <result column="trait_type" jdbcType="VARCHAR" property="traitType" />
+    <result column="trait_reach_users" jdbcType="INTEGER" property="traitReachUsers" />
+    <result column="trait_status" jdbcType="INTEGER" property="traitStatus" />
+    <result column="trait_creator" jdbcType="VARCHAR" property="traitCreator" />
+    <result column="trait_directory" jdbcType="VARCHAR" property="traitDirectory" />
+    <result column="trait_quote_num" jdbcType="INTEGER" property="traitQuoteNum" />
+    <result column="quoted_trait_num" jdbcType="INTEGER" property="quotedTraitNum" />
+    <result column="quoted_crowd_num" jdbcType="INTEGER" property="quotedCrowdNum" />
+    <result column="trait_activat_time" jdbcType="TIMESTAMP" property="traitActivatTime" />
+    <result column="collector_time" jdbcType="TIMESTAMP" property="collectorTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, channel_id, trait_id, trait_name, trait_type, trait_reach_users, trait_status, 
+    trait_creator, trait_directory, trait_quote_num, quoted_trait_num, quoted_crowd_num, 
+    trait_activat_time, collector_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cdp_trait
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cdp_trait
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.talkingdata.plugin.entity.CDPTrait">
+    insert into cdp_trait (id, channel_id, trait_id, 
+      trait_name, trait_type, trait_reach_users, 
+      trait_status, trait_creator, trait_directory, 
+      trait_quote_num, quoted_trait_num, quoted_crowd_num, 
+      trait_activat_time, collector_time)
+    values (#{id,jdbcType=INTEGER}, #{channelId,jdbcType=VARCHAR}, #{traitId,jdbcType=VARCHAR}, 
+      #{traitName,jdbcType=VARCHAR}, #{traitType,jdbcType=VARCHAR}, #{traitReachUsers,jdbcType=INTEGER}, 
+      #{traitStatus,jdbcType=INTEGER}, #{traitCreator,jdbcType=VARCHAR}, #{traitDirectory,jdbcType=VARCHAR}, 
+      #{traitQuoteNum,jdbcType=INTEGER}, #{quotedTraitNum,jdbcType=INTEGER}, #{quotedCrowdNum,jdbcType=INTEGER}, 
+      #{traitActivatTime,jdbcType=TIMESTAMP}, #{collectorTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.talkingdata.plugin.entity.CDPTrait">
+    insert into cdp_trait
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="traitId != null">
+        trait_id,
+      </if>
+      <if test="traitName != null">
+        trait_name,
+      </if>
+      <if test="traitType != null">
+        trait_type,
+      </if>
+      <if test="traitReachUsers != null">
+        trait_reach_users,
+      </if>
+      <if test="traitStatus != null">
+        trait_status,
+      </if>
+      <if test="traitCreator != null">
+        trait_creator,
+      </if>
+      <if test="traitDirectory != null">
+        trait_directory,
+      </if>
+      <if test="traitQuoteNum != null">
+        trait_quote_num,
+      </if>
+      <if test="quotedTraitNum != null">
+        quoted_trait_num,
+      </if>
+      <if test="quotedCrowdNum != null">
+        quoted_crowd_num,
+      </if>
+      <if test="traitActivatTime != null">
+        trait_activat_time,
+      </if>
+      <if test="collectorTime != null">
+        collector_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="traitId != null">
+        #{traitId,jdbcType=VARCHAR},
+      </if>
+      <if test="traitName != null">
+        #{traitName,jdbcType=VARCHAR},
+      </if>
+      <if test="traitType != null">
+        #{traitType,jdbcType=VARCHAR},
+      </if>
+      <if test="traitReachUsers != null">
+        #{traitReachUsers,jdbcType=INTEGER},
+      </if>
+      <if test="traitStatus != null">
+        #{traitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="traitCreator != null">
+        #{traitCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="traitDirectory != null">
+        #{traitDirectory,jdbcType=VARCHAR},
+      </if>
+      <if test="traitQuoteNum != null">
+        #{traitQuoteNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedTraitNum != null">
+        #{quotedTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedCrowdNum != null">
+        #{quotedCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="traitActivatTime != null">
+        #{traitActivatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectorTime != null">
+        #{collectorTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.talkingdata.plugin.entity.CDPTrait">
+    update cdp_trait
+    <set>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="traitId != null">
+        trait_id = #{traitId,jdbcType=VARCHAR},
+      </if>
+      <if test="traitName != null">
+        trait_name = #{traitName,jdbcType=VARCHAR},
+      </if>
+      <if test="traitType != null">
+        trait_type = #{traitType,jdbcType=VARCHAR},
+      </if>
+      <if test="traitReachUsers != null">
+        trait_reach_users = #{traitReachUsers,jdbcType=INTEGER},
+      </if>
+      <if test="traitStatus != null">
+        trait_status = #{traitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="traitCreator != null">
+        trait_creator = #{traitCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="traitDirectory != null">
+        trait_directory = #{traitDirectory,jdbcType=VARCHAR},
+      </if>
+      <if test="traitQuoteNum != null">
+        trait_quote_num = #{traitQuoteNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedTraitNum != null">
+        quoted_trait_num = #{quotedTraitNum,jdbcType=INTEGER},
+      </if>
+      <if test="quotedCrowdNum != null">
+        quoted_crowd_num = #{quotedCrowdNum,jdbcType=INTEGER},
+      </if>
+      <if test="traitActivatTime != null">
+        trait_activat_time = #{traitActivatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectorTime != null">
+        collector_time = #{collectorTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.talkingdata.plugin.entity.CDPTrait">
+    update cdp_trait
+    set channel_id = #{channelId,jdbcType=VARCHAR},
+      trait_id = #{traitId,jdbcType=VARCHAR},
+      trait_name = #{traitName,jdbcType=VARCHAR},
+      trait_type = #{traitType,jdbcType=VARCHAR},
+      trait_reach_users = #{traitReachUsers,jdbcType=INTEGER},
+      trait_status = #{traitStatus,jdbcType=INTEGER},
+      trait_creator = #{traitCreator,jdbcType=VARCHAR},
+      trait_directory = #{traitDirectory,jdbcType=VARCHAR},
+      trait_quote_num = #{traitQuoteNum,jdbcType=INTEGER},
+      quoted_trait_num = #{quotedTraitNum,jdbcType=INTEGER},
+      quoted_crowd_num = #{quotedCrowdNum,jdbcType=INTEGER},
+      trait_activat_time = #{traitActivatTime,jdbcType=TIMESTAMP},
+      collector_time = #{collectorTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
