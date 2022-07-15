@@ -18,7 +18,7 @@
     <properties>
         <java.version>1.8</java.version>
         <httpClient.version>4.4.1</httpClient.version>
-        <jackson.version>2.9.8</jackson.version>
+        <jackson.version>2.12.6.1</jackson.version>
     </properties>
 
     <dependencies>
